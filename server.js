@@ -24,13 +24,8 @@ app.use("/api/dashboard", clustersRouter);  // dashboard endpoint lives in clust
 app.get("/api/health", (_, res) => res.json({ status: "ok", ts: new Date() }));
 
 /* ── Start ──────────────────────────────────────────────────────────────────── */
-initDB()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`🚀  CivicFlow API running at http://localhost:${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("❌  Failed to initialise database:", err);
-    process.exit(1);
-  });
+initDB();
+
+app.listen(PORT, () => {
+  console.log(`🚀  CivicFlow API running at http://localhost:${PORT}`);
+});
